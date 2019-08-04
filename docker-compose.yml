@@ -1,0 +1,29 @@
+---
+version: "3.7"
+services:
+  jenkins-server:
+    build:
+      context: '.'
+      dockerfile: 'jenkins-server.Dockerfile'
+    image: 'phil/jenkins-server'
+    container_name: 'jenkins-server'
+    environment:
+      JAVA_OPTS: -Djenkins.install.runSetupWizard=false -Dhudson.footerURL=http://mycompany.com
+    expose:
+      - '8080'
+    ports:
+      - target: '8080'
+        published: '8080'
+        protocol: 'tcp'
+        mode: 'host'
+    volumes:
+      - type: volume
+        source: jenkins-data
+        target: /var/jenkins_home
+volumes:
+  jenkins-data:
+    name: jenkins-data
+    labels:
+      VERSION: '0.1.0'
+      MAINTAINER: 'Phillip Dudley <Predatorian3@gmail.com>'
+...

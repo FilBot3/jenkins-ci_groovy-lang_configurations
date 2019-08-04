@@ -1,5 +1,9 @@
 #!groovy
 
+/**
+ * This requires that matrix-auth plugin is installed.
+ */
+
 import com.cloudbees.plugins.credentials.CredentialsProvider
 import jenkins.model.Jenkins
 import hudson.security.GlobalMatrixAuthorizationStrategy
